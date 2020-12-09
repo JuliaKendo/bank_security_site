@@ -1,4 +1,3 @@
-from datacenter.models import Passcard
 from datacenter.models import Visit
 from django.shortcuts import render
 from django.utils.timezone import localtime
@@ -18,7 +17,6 @@ def format_duration(visit_duration_seconds):
 
 
 def storage_information_view(request):
-    # Программируем здесь
 
     visits_in_bank_vault = Visit.objects.filter(leaved_at__isnull=True)
     non_closed_visits = [
@@ -30,6 +28,6 @@ def storage_information_view(request):
     ]
 
     context = {
-        "non_closed_visits": non_closed_visits,  # не закрытые посещения
+        "non_closed_visits": non_closed_visits,
     }
     return render(request, 'storage_information.html', context)

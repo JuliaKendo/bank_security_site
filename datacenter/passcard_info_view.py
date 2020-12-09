@@ -5,7 +5,6 @@ from django.utils.timezone import localtime
 
 
 DURATION_OF_LONG_VISIT = 60
-YESNO = {True: 'Да', None: 'Нет'}
 
 
 def passcard_info_view(request, passcode):
@@ -16,7 +15,7 @@ def passcard_info_view(request, passcode):
         {
             "entered_at": localtime(visit.entered_at),
             "duration": visit.format_duration(visit.get_duration(visit)),
-            "is_strange": YESNO[visit.is_visit_long(visit, DURATION_OF_LONG_VISIT)],
+            "is_strange": visit.is_visit_long(visit, DURATION_OF_LONG_VISIT),
         } for visit in visits_in_bank_vault
     ]
     context = {

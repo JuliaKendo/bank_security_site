@@ -10,7 +10,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'HOST': env('DB_HOST'),
         'PORT': env.int('DB_PORT'),
-        'NAME': 'checkpoint',
+        'NAME': env('DB_NAME'),
         'USER': env('DB_USER'),
         'PASSWORD': env('DB_PASSWORD'),
     }
